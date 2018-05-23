@@ -1,0 +1,2 @@
+EXEC tsqlt.Run @TestName = N'[TestSample].[test spDouble Calculation]'
+GO

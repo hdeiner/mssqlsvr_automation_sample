@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="Legacy Schema" author="howarddeiner">
+        <sqlFile path="src/main/db/legacy-schema.sql"/>
+    </changeSet>
+
+    <changeSet id="Legacy Schema Static Data" author="howarddeiner">
+        <sqlFile path="src/main/db/legacy-schema-static-data.sql"/>
+    </changeSet>
+
+    <!--
+    <changeSet id="Legacy Schema Stored Procedures" author="howarddeiner">
+        <createProcedure path="src/test/db/storedProcedures/01_newCustomer.sql"/>
+        <createProcedure path="src/test/db/storedProcedures/02_placeNewOrder.sql"/>
+        <createProcedure path="src/test/db/storedProcedures/03_placeNewOrder.sql"/>
+        <createProcedure path="src/test/db/storedProcedures/04_fillOrder.sql"/>
+        <createProcedure path="src/test/db/storedProcedures/05_fillOrder.sql"/>
+        <createProcedure path="src/test/db/storedProcedures/06_showOrderDetails.sql"/>
+        <createProcedure path="src/test/db/storedProcedures/07_showOrderDetails.sql"/>
+        <createProcedure path="src/test/db/storedProcedures/08_showOrderDetails.sql"/>
+    </changeSet>
+    -->
+
+</databaseChangeLog>
