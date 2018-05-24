@@ -12,7 +12,7 @@ Actually, forget that last tidbit.  Liquibase must use JDBC drivers because it c
 
 sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
 
-For this project, the schema was "borrowed" from https://msdn.microsoft.com/en-us/library/jj851212(v=vs.103).aspx.  I have minimally massaged the database creation commands into src/main/db/changelog-legacy-schema.xml, which in turn pulls in files for legacy-schema.sql, legacy-schema-static-data.sql and five storedProcedures for cancelOrder.sql, fillOrder.sql, 01_newCustomer.sql, placeNewOrder.sql, and showOrderDetails.sql.
+For this project, the schema was "borrowed" from https://msdn.microsoft.com/en-us/library/jj851212(v=vs.103).aspx.  I have minimally massaged the database creation commands into src/main/db/changelog-legacy-schema.xml, which in turn pulls in files for legacy-schema.sql, legacy-schema-static-data.sql and five storedProcedures for cancelOrder.sql, fillOrder.sql, testNewCustomer.sql, testPlaceNewOrder.sql, and showOrderDetails.sql.
 
 At this point, one can run the following to create the MSSQL Database:
 ```bash

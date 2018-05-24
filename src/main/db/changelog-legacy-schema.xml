@@ -13,17 +13,10 @@
         <sqlFile path="src/main/db/legacy-schema-static-data.sql"/>
     </changeSet>
 
-    <!--
     <changeSet id="Legacy Schema Stored Procedures" author="howarddeiner">
-        <createProcedure path="src/test/db/storedProcedures/01_newCustomer.sql"/>
-        <createProcedure path="src/test/db/storedProcedures/02_placeNewOrder.sql"/>
-        <createProcedure path="src/test/db/storedProcedures/03_placeNewOrder.sql"/>
-        <createProcedure path="src/test/db/storedProcedures/04_fillOrder.sql"/>
-        <createProcedure path="src/test/db/storedProcedures/05_fillOrder.sql"/>
-        <createProcedure path="src/test/db/storedProcedures/06_showOrderDetails.sql"/>
-        <createProcedure path="src/test/db/storedProcedures/07_showOrderDetails.sql"/>
-        <createProcedure path="src/test/db/storedProcedures/08_showOrderDetails.sql"/>
+        <createProcedure path="src/main/db/storedProcedures/fillOrder.sql"/>
+        <createProcedure path="src/main/db/storedProcedures/newCustomer.sql"/>
+        <createProcedure path="src/main/db/storedProcedures/placeNewOrder.sql"/>
     </changeSet>
-    -->
 
 </databaseChangeLog>

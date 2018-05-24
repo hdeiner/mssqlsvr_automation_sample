@@ -1,10 +1,10 @@
 --liquibase formatted sql
-CREATE PROCEDURE [Sales].[uspPlaceNewOrder]
+CREATE PROCEDURE [Sales].[placeNewOrder]
 @CustomerID INT, @Amount INT, @OrderDate DATETIME, @Status CHAR (1)='O'
 AS
 BEGIN
 DECLARE @RC INT
-BEGIN TRANSACTION
+--BEGIN TRANSACTION
 INSERT INTO [Sales].[Orders] (CustomerID, OrderDate, FilledDate, Status, Amount)
 VALUES (@CustomerID, @OrderDate, NULL, @Status, @Amount)
 SELECT @RC = SCOPE_IDENTITY();
@@ -12,7 +12,7 @@ UPDATE [Sales].[Customer]
 SET
 YTDOrders = YTDOrders + @Amount
 WHERE [CustomerID] = @CustomerID
-COMMIT TRANSACTION
+--COMMIT TRANSACTION
 RETURN @RC
 END
 --GO

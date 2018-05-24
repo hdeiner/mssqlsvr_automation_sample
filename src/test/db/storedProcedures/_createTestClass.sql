@@ -1,0 +1,1 @@
+EXEC tSQLt.NewTestClass 'testSales';

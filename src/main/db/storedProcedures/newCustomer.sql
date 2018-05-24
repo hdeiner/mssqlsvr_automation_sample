@@ -1,7 +1,7 @@
 --liquibase formatted sql
 --PRINT N'Creating Sales.uspNewCustomer...';
 --GO
-CREATE PROCEDURE [Sales].[uspNewCustomer]
+CREATE PROCEDURE [Sales].[newCustomer]
 @CustomerName NVARCHAR (40)
 AS
 BEGIN

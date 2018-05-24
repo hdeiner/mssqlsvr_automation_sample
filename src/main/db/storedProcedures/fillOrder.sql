@@ -1,7 +1,7 @@
 --liquibase formatted sql
 -- --PRINT N'Creating Sales.uspFillOrder...';
 --GO
-CREATE PROCEDURE [Sales].[uspFillOrder]
+CREATE PROCEDURE [Sales].[fillOrder]
 @OrderID INT, @FilledDate DATETIME
 AS
 BEGIN
