@@ -3,10 +3,10 @@
 .project
 .settings/
 
-@ IntelliJ
+# IntelliJ
 .idea/
-@.iml
-@.iws
+*.iml
+*.iws
 
 # Mac
 .DS_Store
