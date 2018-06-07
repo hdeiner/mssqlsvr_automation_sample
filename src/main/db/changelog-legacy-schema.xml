@@ -19,4 +19,8 @@
         <createProcedure path="src/main/db/storedProcedures/placeNewOrder.sql"/>
     </changeSet>
 
+    <changeSet id="UM Portal Schema" author="howarddeiner">
+        <createProcedure path="src/main/db/um_portal-schema.sql"/>
+    </changeSet>
+
 </databaseChangeLog>

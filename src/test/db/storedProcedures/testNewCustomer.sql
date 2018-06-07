@@ -11,11 +11,11 @@ CREATE PROCEDURE [testSales].[test that if we call newCustomer and add someone t
     SELECT @RC = 0,
            @CustomerName = 'Fictitious Customer';
 
-    EXECUTE @RC = [Sales].[newCustomer] @CustomerName;
+    EXECUTE @RC = [UM_Portal].[newCustomer] @CustomerName;
 
-    SET @actual = (SELECT COUNT(*) FROM [Sales].[Customer]);
+    SET @actual = (SELECT COUNT(*) FROM [UM_Portal].[Customer]);
 
     EXEC tSQLt.AssertEquals @Expected = @expected, @Actual = @actual,
-          @Message = N'[Sales].[newCustomer] did not insert the customer';
+          @Message = N'[UM_Portal].[newCustomer] did not insert the customer';
 
   END

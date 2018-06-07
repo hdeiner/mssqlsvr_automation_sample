@@ -18,3 +18,7 @@
 log/
 target/
 .mvn
+
+
+# My mess
+test_results/

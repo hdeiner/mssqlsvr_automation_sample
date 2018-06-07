@@ -20,21 +20,21 @@ CREATE PROCEDURE [testSales].[test that placing an order works] AS
            @OrderDate = getdate(),
            @Status = 'O';
 
-    EXECUTE @RC = [Sales].[newCustomer] @CustomerName;
+    EXECUTE @RC = [UM_Portal].[newCustomer] @CustomerName;
 
-    SET @actualCustomerCount = (SELECT COUNT(*) FROM [Sales].[Customer]);
+    SET @actualCustomerCount = (SELECT COUNT(*) FROM [UM_Portal].[Customer]);
 
     EXEC tSQLt.AssertEquals @Expected = @expectedCustomerCount, @Actual = @actualCustomerCount,
-          @Message = N'[Sales].[newCustomer] did not insert the customer';
+          @Message = N'[UM_Portal].[newCustomer] did not insert the customer';
 
     -- NOTE: Assumes that you inserted a Customer record with CustomerName='Fictitious Customer' in the pre-test script.
-    SELECT @CustomerID = [CustomerID] FROM [Sales].[Customer] WHERE [CustomerName] = @CustomerName;
+    SELECT @CustomerID = [CustomerID] FROM [UM_Portal].[Customer] WHERE [CustomerName] = @CustomerName;
 
     -- place an order for that customer
-    EXECUTE @RC = [Sales].[placeNewOrder] @CustomerID, @Amount, @OrderDate, @Status;
+    EXECUTE @RC = [UM_Portal].[placeNewOrder] @CustomerID, @Amount, @OrderDate, @Status;
 
     -- verify that the YTDOrders value is correct.
-    SELECT @actualYTDOrders = [YTDOrders] FROM [Sales].[Customer] WHERE [CustomerID] = @CustomerID
+    SELECT @actualYTDOrders = [YTDOrders] FROM [UM_Portal].[Customer] WHERE [CustomerID] = @CustomerID
 
     EXEC tSQLt.AssertEquals @Expected = @expectedYTDOrders, @Actual = @actualYTDOrders,
                             @Message = N'placeNewOrder did not update YTDOrders';

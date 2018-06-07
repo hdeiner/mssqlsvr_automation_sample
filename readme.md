@@ -26,4 +26,8 @@ Still in trouble:
 1) Liquibase handling of stored procedures
 2) Having to run the tSQLt test runner twice to see the results
 
-
+* Need SQL Server command-line tools on Linux: 
+  * https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-linux-2017
+* Using sqlops: Microsoft SQL Operations Studio on Linux to look at and demo database created.  
+  * https://docs.microsoft.com/en-gb/sql/sql-operations-studio/what-is?view=sql-server-linux-2017  
+  * https://docs.microsoft.com/en-gb/sql/sql-operations-studio/download?view=sql-server-linux-2017

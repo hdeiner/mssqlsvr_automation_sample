@@ -20,19 +20,19 @@ CREATE PROCEDURE [testSales].[test that filling an order works] AS
            @FilledDate = getdate(),
            @Status = 'O';
 
-    EXECUTE @RC = [Sales].[newCustomer] @CustomerName;
+    EXECUTE @RC = [UM_Portal].[newCustomer] @CustomerName;
     -- NOTE: Assumes that you inserted a Customer record with CustomerName='Fictitious Customer' in the pre-test script.
-    SELECT @CustomerID = [CustomerID] FROM [Sales].[Customer] WHERE [CustomerName] = @CustomerName;
+    SELECT @CustomerID = [CustomerID] FROM [UM_Portal].[Customer] WHERE [CustomerName] = @CustomerName;
 
-    EXECUTE @RC = [Sales].[placeNewOrder] @CustomerID, @Amount, @OrderDate, @Status;
+    EXECUTE @RC = [UM_Portal].[placeNewOrder] @CustomerID, @Amount, @OrderDate, @Status;
     -- Get the most recently added order.
-    SELECT @OrderID = MAX([OrderID]) FROM [Sales].[Orders] WHERE [CustomerID] = @CustomerID;
+    SELECT @OrderID = MAX([OrderID]) FROM [UM_Portal].[Orders] WHERE [CustomerID] = @CustomerID;
 
     -- fill an order for that customer
-    EXECUTE @RC = [Sales].[fillOrder] @OrderID, @FilledDate;
+    EXECUTE @RC = [UM_Portal].[fillOrder] @OrderID, @FilledDate;
 
     -- verify that the YTDOrders value is correct.
-    SELECT @actualYTDSales = [YTDSales] FROM [Sales].[Customer] WHERE [CustomerID] = @CustomerID
+    SELECT @actualYTDSales = [YTDSales] FROM [UM_Portal].[Customer] WHERE [CustomerID] = @CustomerID
 
     EXEC tSQLt.AssertEquals @Expected = @expectedYTDSales, @Actual = @actualYTDSales,
           @Message = N'fillOrder did not get YTDSales updated correctly';
