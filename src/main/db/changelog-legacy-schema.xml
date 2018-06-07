@@ -21,6 +21,7 @@
 
     <changeSet id="UM Portal Schema" author="howarddeiner">
         <createProcedure path="src/main/db/um_portal-schema.sql"/>
+        <sqlFile path="src/main/db/um_portal-schema-static-data.sql"/>
     </changeSet>
 
 </databaseChangeLog>

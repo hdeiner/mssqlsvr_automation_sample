@@ -44,9 +44,20 @@ CREATE TABLE [UM_Portal].[EDIProviderInvitation] (
     [RegistrationNumber]        VARCHAR (20)                 NOT NULL,
     [InvitationSentDate]        DATETIME                     NOT NULL,
     [FKEDIProviderStatusId]     INT                          NOT NULL,
+    [CreatedBy]                 VARCHAR (32),
     [CreateTime]                DATETIME,
     [ModifieddBy]               VARCHAR (32),
     [ModifyTime]                DATETIME
+);
+
+CREATE TABLE [UM_Portal].[PreviousAuthRegVerification] (
+    [PreviousAuthRegVerificationId]   INT          IDENTITY (1, 1) NOT NULL,
+    [FKEDIProviderInvitationId1]       INT                          NOT NULL,
+    [PreviousAuthId]                  INT                          NOT NULL,
+    [CreatedBy]                       VARCHAR (32),
+    [CreateTime]                      DATETIME,
+    [ModifieddBy]                     VARCHAR (32),
+    [ModifyTime]                      DATETIME
 );
 
 ALTER TABLE [UM_Portal].[ProviderType]
@@ -65,6 +76,10 @@ ALTER TABLE [UM_Portal].[EDIProviderInvitation]
     ADD CONSTRAINT [EDIProviderInvitationId]
     PRIMARY KEY   ([EDIProviderInvitationId]);
 
+ALTER TABLE [UM_Portal].[PreviousAuthRegVerification]
+    ADD CONSTRAINT [PreviousAuthRegVerificationId]
+    PRIMARY KEY   ([PreviousAuthRegVerificationId]);
+
 ALTER TABLE [UM_Portal].[EDIRequestor]
     ADD CONSTRAINT [FKProviderTypeId]
     FOREIGN KEY   ([FKProviderTypeId])
@@ -75,3 +90,7 @@ ALTER TABLE [UM_Portal].[EDIRequestor]
     FOREIGN KEY   ([FKEDIProviderInvitationId])
     REFERENCES     [UM_Portal].[EDIProviderInvitation] ([EDIProviderInvitationId]);
 
+ALTER TABLE [UM_Portal].[PreviousAuthRegVerification]
+    ADD CONSTRAINT [FKEDIProviderInvitationId1]
+    FOREIGN KEY   ([FKEDIProviderInvitationId1])
+    REFERENCES     [UM_Portal].[EDIProviderInvitation] ([EDIProviderInvitationId]);
