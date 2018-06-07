@@ -7,8 +7,7 @@ CREATE TABLE [UM_Portal].[ProviderType] (
     [CreatedBy]        VARCHAR (32),
     [CreateTime]       DATETIME,
     [ModifieddBy]      VARCHAR (32),
-    [ModifyTime]       DATETIME,
-    CONSTRAINT [ProviderTypeId] PRIMARY KEY ([ProviderTypeId])
+    [ModifyTime]       DATETIME
 );
 
 CREATE TABLE [UM_Portal].[State] (
@@ -19,8 +18,7 @@ CREATE TABLE [UM_Portal].[State] (
     [CreatedBy]        VARCHAR (32),
     [CreateTime]       DATETIME,
     [ModifieddBy]      VARCHAR (32),
-    [ModifyTime]       DATETIME,
-    CONSTRAINT [StateId] PRIMARY KEY ([StateId])
+    [ModifyTime]       DATETIME
 );
 
 CREATE TABLE [UM_Portal].[EDIRequestor] (
@@ -36,10 +34,7 @@ CREATE TABLE [UM_Portal].[EDIRequestor] (
     [CreatedBy]                   VARCHAR (32),
     [CreateTime]                  DATETIME,
     [ModifieddBy]                 VARCHAR (32),
-    [ModifyTime]                  DATETIME,
-    CONSTRAINT [EDIRequestorId]   PRIMARY KEY ([EDIRequestorId]),
-    CONSTRAINT [FKProviderTypeId] FOREIGN KEY ([FKProviderTypeId])
-                                  REFERENCES [UM_Portal].[ProviderType] ([ProviderTypeId])
+    [ModifyTime]                  DATETIME
 );
 
 CREATE TABLE [UM_Portal].[EDIProviderInvitation] (
@@ -47,8 +42,36 @@ CREATE TABLE [UM_Portal].[EDIProviderInvitation] (
     [FirstName]                 VARCHAR (30),
     [LastName]                  VARCHAR (50)                 NOT NULL,
     [RegistrationNumber]        VARCHAR (20)                 NOT NULL,
-    [CreateTime]       DATETIME,
-    [ModifieddBy]      VARCHAR (32),
-    [ModifyTime]       DATETIME,
-    CONSTRAINT [EDIProviderInvitationId] PRIMARY KEY ([EDIProviderInvitationId]),
+    [InvitationSentDate]        DATETIME                     NOT NULL,
+    [FKEDIProviderStatusId]     INT                          NOT NULL,
+    [CreateTime]                DATETIME,
+    [ModifieddBy]               VARCHAR (32),
+    [ModifyTime]                DATETIME
 );
+
+ALTER TABLE [UM_Portal].[ProviderType]
+    ADD CONSTRAINT [ProviderTypeId]
+    PRIMARY KEY   ([ProviderTypeId]);
+
+ALTER TABLE [UM_Portal].[State]
+    ADD CONSTRAINT [StateId]
+    PRIMARY KEY   ([StateId]);
+
+ALTER TABLE [UM_Portal].[EDIRequestor]
+    ADD CONSTRAINT [EDIRequestorId]
+    PRIMARY KEY   ([EDIRequestorId]);
+
+ALTER TABLE [UM_Portal].[EDIProviderInvitation]
+    ADD CONSTRAINT [EDIProviderInvitationId]
+    PRIMARY KEY   ([EDIProviderInvitationId]);
+
+ALTER TABLE [UM_Portal].[EDIRequestor]
+    ADD CONSTRAINT [FKProviderTypeId]
+    FOREIGN KEY   ([FKProviderTypeId])
+    REFERENCES     [UM_Portal].[ProviderType] ([ProviderTypeId]);
+
+ALTER TABLE [UM_Portal].[EDIRequestor]
+    ADD CONSTRAINT [FKEDIProviderInvitationId]
+    FOREIGN KEY   ([FKEDIProviderInvitationId])
+    REFERENCES     [UM_Portal].[EDIProviderInvitation] ([EDIProviderInvitationId]);
+
